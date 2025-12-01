@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flexbox Lineup — Boston Sports Hall of Fame</title>
+
+<link rel="stylesheet" href="final_project_style.css">
+
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="boston-red-sox-logo-transparent.png" alt="Red Sox Logo" class="header-logo">
+        <img src="Boston_Bruins.svg.png" alt="Bruins Logo" class="header-logo">
+     </div>
+      <h1>The Boston Sports Hall of Fame (BSHOF)</h1>
+     <div class="header-right">
+            <img src="boston-celtics-logo-transparent.png" alt="Celtics Logo" class="header-logo">
+            <img src="New_England_Patriots_logo.svg.png" alt="Patriots Logo" class="header-logo">
+    </div>
+     
+    
+  <nav>
+    <ul style="list-style:none; display:flex; gap:12px; justify-content:center; padding:12px 0;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="final_project_teams.html">Teams</a></li>
+      <li><a href="final_project_hall_of_fame.html">Hall of Fame</a></li>
+      <li><a href="final_project_games.html" class="active">Interactive</a></li>
+    </ul>
+  </nav>
+
+
+
+</header>
+
+<main class="game-wrap">
+  <h1 class="page-heading">Order the teams</h1>
+
+  <p id="modeLabel">Mode: <span id="modeName">...</span></p>
+  <p id="instruction">Instruction will appear here.</p>
+
+  <div id="flex-container" aria-label="Team lineup — drag to reorder">
+    <!-- Cards added by JS -->
+  </div>
+
+  <div class="controls">
+    <button id="checkButton" class="btn-game">Check Order</button>
+    <button id="resetButton" class="btn-game secondary">Reset</button>
+  </div>
+
+  <p id="result" aria-live="polite"></p>
+</main>
+
+<script src="final_project_flexbox.js"></script>
+
+</body>
+</html>
