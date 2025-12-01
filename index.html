@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Boston Sports Hall of Fame</title>
+    <link rel="stylesheet" href="final_project_style.css">
+</head>
+
+<body>
+<header>
+    <div class="header-left">
+        <img src="boston-red-sox-logo-transparent.png" alt="Red Sox logo" class="header-logo">
+        <img src="Boston_Bruins.svg.png" alt="Bruins logo" class="header-logo"> 
+    </div>
+
+    <h1>🏆The Boston Sports Hall of Fame(BSHOF)🏆</h1>
+
+    <div class="header-right">
+        <img src="boston-celtics-logo-transparent.png" alt="Celtics logo" class="header-logo">
+        <img src="New_England_Patriots_logo.svg.png" alt="Patriots logo" class="header-logo">
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="final_project_teams.html">Teams</a></li>
+            <li><a href="final_project_games.html">Interactive Games</a></li>
+            <li><a href="final_project_hall_of_fame.html">Hall of Fame</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main> 
+    <section class="introduction">
+        <h2 class="page-heading">Step Inside!</h2>
+        <p>
+            Boston isn't known as "The City of Champions" for no reason. 
+            Across the four major American professional sports leagues (NFL, NBA, MLB, and NHL), 
+            Boston has won a staggering 39 championships. 
+            Sports are the lifeblood of the city — Bostonians live and die by our teams. 
+            Let's honor some of our greatest players and their achievements in this website.
+        </p>
+        <img src="city_of_champs.jpg" alt="Boston skyline with tagline city of champions" class="hero-img">
+    </section>
+
+    <!-- Random Quote Section -->
+    <section class="quote-section">
+        <h2>Quote of the Moment</h2>
+        <blockquote id="random-quote">Loading quote...</blockquote>
+        <p id="quote-author"></p>
+    </section>
+
+    <section class="highlight">
+        <h2>Four Teams, One City</h2>
+        <p>
+            Explore the stories of the Red Sox, Bruins, Celtics, and Patriots —  
+            each a symbol of passion, resilience, and championship culture.
+        </p>
+        <a href="teams.html" class="btn">Meet the Teams</a>
+    </section>
+
+    <section class="highlight">
+        <h3>The criteria for "induction"</h3>
+        <p>
+            What makes a Hall of Famer? Some say it's championships, others say statistical achievement, 
+            some say character. For us, it's a combination of all those things that any given player 
+            must excel at for entry:
+        </p>
+
+        <ul> 
+            <li>1. What team accomplishments did the player help achieve? (e.g., strong win-loss record or championships)</li>
+            <li>2. What individual accomplishments did the player earn? (e.g., MVP awards)</li>
+            <li>3. How did the player impact the city of Boston?</li>
+            <li>4. Was the player a sportsman and model of leadership?</li>
+            <li>5. Did the player change or influence the way their sport was played?</li>
+        </ul>
+
+        <p>You are now cordially invited. Visit below.</p>
+        <a href="final_project_hall_of_fame.html" class="btn">View the Hall of Famers</a>
+
+        <figure>
+            <img src="Rushmore_3.webp" alt="The Mount Rushmore of Boston Sports" class="mount-rushmore">
+            <figcaption>The Mount Rushmore of Boston's greatest players</figcaption>
+        </figure>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Boston Sports Hall of Fame | Designed by Theodore Asa Hummel</p>
+</footer>
+
+<!-- JSON + localStorage implementation: overwrites stored quotes with the chosen list -->
+<script>
+(function() {
+    // MOST of your previous JSON quotes (selected and cleaned)
+    const chosenQuotes = [
+        { "quote": "Success is never final; failure is never fatal.", "author": "Bill Belichick" },
+        { "quote": "This is our city, and nobody is going to dictate our freedom.", "author": "David Ortiz" },
+        { "quote": "Work hard. Stay humble.", "author": "Patrice Bergeron" },
+        { "quote": "The Boston Celtics are not a basketball team; they’re a way of life.", "author": "Red Auerbach" },
+        { "quote": "Talent counts, but chemistry matters even more.", "author": "Tom Brady" },
+        { "quote": "Anything is possiiiibleeeee!!!!", "author": "Kevin Garnett" },
+        { "quote": "We're on to Cincinnati.", "author": "Bill Belichick" },
+        { "quote": "For the first time in 86 years, the Red Sox have won baseball’s world championship — can you believe it?!", "author": "Joe Castiglione - Red Sox Announcer" },
+        { "quote": "Tom Brady, you are Tommy Terrific!", "author": "Gil Santos - Patriots Announcer" },
+        { "quote": "Forget about style — worry about results.", "author": "Bobby Orr" },
+        { "quote": "If there was ever a man born to be a hitter, it was me.", "author": "Ted Williams" },
+        { "quote": "As far as playing, I didn't care who guarded me — red, yellow, black. I just didn't want a white guy guarding me, because it's disrespect to my game.", "author": "Larry Bird" },
+        { "quote": "I am Tom Brady, and I am a Patriot.", "author": "Tom Brady" },
+        { "quote": "Play for the name on the front, not the name on the back.", "author": "Patrice Bergeron" },
+        { "quote": "The legs feed the wolf.", "author": "Herb Brooks" },
+        { "quote": "We’re not here to talk about the past. We’re here to win now.", "author": "Bill Belichick" },
+        { "quote": "You mess with one of us, you mess with all of us.", "author": "Milan Lucic" },
+        { "quote": "Winning is more fun than fun is fun.", "author": "Red Auerbach" },
+        { "quote": "I want the ball. Always.", "author": "Tom Brady" },
+        { "quote": "You gotta believe in this team. Always.", "author": "Jason Varitek" },
+        { "quote": "We play for the city. And the city plays with us.", "author": "David Ortiz" }
+    ];
+
+    // Overwrite localStorage with chosen list so old test data is replaced:
+    localStorage.setItem("bostonQuotes", JSON.stringify(chosenQuotes));
+
+    // Load from storage (guaranteed to exist now)
+    let quoteList = [];
+    try {
+        quoteList = JSON.parse(localStorage.getItem("bostonQuotes")) || [];
+    } catch (e) {
+        console.error("Error parsing bostonQuotes from localStorage:", e);
+        quoteList = chosenQuotes.slice(); // fallback
+    }
+
+    // Pick a random quote
+    if (quoteList.length > 0) {
+        const idx = Math.floor(Math.random() * quoteList.length);
+        const item = quoteList[idx];
+        const quoteEl = document.getElementById("random-quote");
+        const authorEl = document.getElementById("quote-author");
+
+        if (quoteEl) quoteEl.textContent = `"${item.quote}"`;
+        if (authorEl) authorEl.textContent = `— ${item.author}`;
+    } else {
+        // fallback message
+        const quoteEl = document.getElementById("random-quote");
+        const authorEl = document.getElementById("quote-author");
+        if (quoteEl) quoteEl.textContent = "No quotes available.";
+        if (authorEl) authorEl.textContent = "";
+    }
+})();
+</script>
+
+</body>
+</html>
