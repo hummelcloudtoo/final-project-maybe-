@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Sports Trivia | Boston Sports Hall of Fame</title>
+    <link rel="stylesheet" href="final_project_style.css">
+    <style>
+        /* Optional inline CSS for buttons and message */
+        .answer-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .answer-btn {
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .answer-message {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body> 
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="final_project_teams.html">Teams</a></li>
+            <li><a href="final_project_hall_of_fame.html">Hall of Fame</a></li>
+            <li><a href="final_project_games.html" class="active">Interactive</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="trivia-container">
+
+    <h1 class="page-heading">🏆 Boston Sports Trivia Challenge</h1>
+    <p class="intro">Test your knowledge of Boston’s legendary teams, athletes, and unforgettable sports moments!</p>
+
+    <!-- TRIVIA BOX -->
+    <section id="triviaBox" class="trivia-box">
+        <h2 id="questionText">Loading question...</h2>
+
+        <div id="answerButtons" class="answer-buttons">
+            <!-- JS will insert answer buttons here -->
+        </div>
+
+        <p id="answerMessage" class="answer-message"></p>
+
+        <button id="nextBtn" class="btn" style="display:none;">Next Question</button>
+    </section>
+
+    <!-- FINAL SCORE SCREEN -->
+    <section id="finalScreen" class="final-screen" style="display:none;">
+        <h2>Your Final Score:</h2>
+        <p id="finalScoreText"></p>
+        <button id="restartBtn" class="btn">Play Again</button>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2025 Boston Sports Hall of Fame | Designed by Theo Asa Hummel</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const questions = [
+        {
+            question: "Which Boston team has the most championships?",
+            answers: ["Celtics", "Patriots", "Red Sox", "Bruins"],
+            correct: "Celtics"
+        },
+        {
+            question: "Who is known as 'Big Papi'?",
+            answers: ["David Ortiz", "Larry Bird", "Tom Brady", "Bobby Orr"],
+            correct: "David Ortiz"
+        },
+        {
+            question: "What year did the Patriots complete their undefeated regular season?",
+            answers: ["2007", "2001", "2014", "1996"],
+            correct: "2007"
+        },
+        {
+            question: "Which Bruins legend wore #4?",
+            answers: ["Cam Neely", "Bobby Orr", "Ray Bourque", "Patrice Bergeron"],
+            correct: "Bobby Orr"
+        }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+
+    const questionText = document.getElementById("questionText");
+    const answerButtons = document.getElementById("answerButtons");
+    const answerMessage = document.getElementById("answerMessage");
+    const nextBtn = document.getElementById("nextBtn");
+    const finalScreen = document.getElementById("finalScreen");
+    const triviaBox = document.getElementById("triviaBox");
+    const finalScoreText = document.getElementById("finalScoreText");
+    const restartBtn = document.getElementById("restartBtn");
+
+    function loadQuestion() {
+        const q = questions[currentIndex];
+        questionText.textContent = q.question;
+        answerButtons.innerHTML = "";
+        answerMessage.textContent = "";
+        nextBtn.style.display = "none";
+
+        q.answers.forEach(answer => {
+            const btn = document.createElement("button");
+            btn.textContent = answer;
+            btn.classList.add("btn", "answer-btn");
+            btn.addEventListener("click", () => checkAnswer(answer));
+            answerButtons.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selected) {
+        const correct = questions[currentIndex].correct;
+
+        if (selected === correct) {
+            score++;
+            answerMessage.style.color = "green";
+            answerMessage.textContent = "✅ Correct!";
+        } else {
+            answerMessage.style.color = "red";
+            answerMessage.textContent = "❌ Incorrect!";
+        }
+
+        Array.from(answerButtons.children).forEach(btn => btn.disabled = true);
+        nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.addEventListener("click", () => {
+        currentIndex++;
+        if (currentIndex < questions.length) {
+            loadQuestion();
+        } else {
+            triviaBox.style.display = "none";
+            finalScreen.style.display = "block";
+            finalScoreText.textContent = `${score} / ${questions.length}`;
+        }
+    });
+
+    restartBtn.addEventListener("click", () => {
+        currentIndex = 0;
+        score = 0;
+        triviaBox.style.display = "block";
+        finalScreen.style.display = "none";
+        loadQuestion();
+    });
+
+    loadQuestion();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,482 @@
+/* ========================================
+   GLOBAL RESET
+=========================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------------------
+   MAIN STYLES
+--------------------------------*/
+body {
+    font-family: "Futura", sans-serif;
+    background-color: #8B0000; /* GLOBAL RED BACKGROUND */
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Override for Hall of Fame page */
+body#hall-of-fame {
+    background-color: #f8ae02; /* Bruins yellow */
+}
+
+/* ------------------------------
+   HEADER
+--------------------------------*/
+header {
+    background-color: #002244;
+    color: #ff991c;
+    text-align: center;
+    padding: 1.75rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+/* Header logos */
+.header-left,
+.header-right {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-left { left: 1rem; }
+.header-right { right: 1rem; }
+
+.header-logo {
+    height: 75px;
+}
+
+/* Center h2's */
+.page-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* ------------------------------
+   NAVIGATION
+--------------------------------*/
+nav ul {
+    list-style: none;
+    margin: 2rem 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+
+/* INDEX PAGE — Background Image */
+.index-page {
+    background-image: url("boston_skyline.jpg"); /* <-- replace with your image filename */
+    background-size: cover;            /* fills the screen */
+    background-position: center;       /* centers the skyline */
+    background-attachment: fixed;      /* optional: makes parallax effect */
+    background-repeat: no-repeat;
+    color: white;                      /* text more readable */
+}
+
+
+nav a:hover,
+nav a.active {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* ------------------------------
+   MAIN CONTENT
+--------------------------------*/
+main {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+section { margin-bottom: 3rem; }
+
+/* ------------------------------
+   BUTTONS
+--------------------------------*/
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    background-color: #007A33;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn:hover { background-color: #005825; }
+
+
+
+/* Quote Box Styles */
+.quote-section {
+    background-color: #ffffff;
+    border: 3px solid rgba(0, 34, 68, 0.60);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+.quote-section h2 {
+    margin-bottom: 15px;
+}
+
+#random-quote {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#quote-author {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ------------------------------
+   IMAGES
+--------------------------------*/
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-img {
+    width: 50%;
+    margin: 1rem auto;
+    border-radius: 15px;
+}
+
+.mount-rushmore {
+    width: 80%;
+    margin: 2rem auto;
+    border-radius: 15px;
+}
+
+/* ------------------------------
+   TEAM SECTIONS
+--------------------------------*/
+.redsox, .celtics, .patriots, .bruins {
+    padding: 2rem;
+    border-radius: 7px;
+    margin-bottom: 2rem;
+}
+
+.redsox { background-color: #BD3039; color: white; }
+.celtics { background-color: #007A33; color: white; }
+.patriots { background-color: #002244; color: white; }
+.bruins { background-color: #FFB81C; color: black; }
+
+/* TEAM PAGE IMAGES */
+.team img {
+    width: 40%;
+    max-width: 300px;
+    margin: 1.5rem auto;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------------------
+   TEAM-COLORED PLAYER BOXES
+--------------------------------*/
+.redsox-player {
+    background: rgba(189, 48, 57, 0.60);
+    border-left: 8px solid #BD3039;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.celtics-player {
+    background: rgba(0, 122, 51, 0.60);
+    border-left: 8px solid #007A33;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.patriots-player {
+    background: rgba(0, 34, 68, 0.60);
+    border-left: 8px solid #002244;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.bruins-player {
+    background: rgba(255, 184, 28, 0.60);
+    border-left: 8px solid #FFB81C;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+
+/* ------------------------------
+   PLAYER PROFILES
+--------------------------------*/
+.player {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2rem;
+}
+
+.player img {
+    flex: 1 1 300px;
+    border-radius: 10px;
+}
+
+.player div { flex: 2 1 400px; }
+
+.player h3 { color: white; margin-top: 0; }
+
+.player ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+}
+
+/* ------------------------------
+   FOOTER
+--------------------------------*/
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #002244;
+    color: white;
+}
+
+/* trivia page*/
+.trivia-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f7f7f7;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.answer-btn {
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #333;
+    width: 100%;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer-btn:hover { transform: scale(1.03); }
+.correct { background-color: #4CAF50; }
+.incorrect { background-color: #E53935; }
+
+/* flexbox game*/
+.game-wrap {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+#modeLabel {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+#instruction {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+#flex-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f0f6ff;
+  border: 2px dashed rgba(0,40,80,0.08);
+  min-height: 150px;
+}
+
+/* Cards */
+.card {
+  width: 150px;
+  background: white;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  user-select: none;
+  border: 2px solid transparent;
+}
+
+.hof-carousel {
+    font-size: x-large;
+}
+
+.page-heading {
+    font-size: xx-large;
+}
+.card.dragging {
+  opacity: 0.75;
+  transform: scale(1.02);
+  cursor: grabbing;
+}
+
+.card img {
+  width: 100px;
+  height: auto;
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.controls {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button.btn-game {
+  background: #002244;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button.btn-game.secondary {
+  background: #6b6b6b;
+}
+
+#result {
+  margin-top: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* Responsive Fix */
+@media (max-width: 600px) {
+  #flex-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+  }
+  .card { width: 130px; }
+}
+
+/* =======================================
+   HALL OF FAME CAROUSEL
+=========================================*/
+.hof-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+.hof-member {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hof-member img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    object-fit: contain;
+}
+
+.hof-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* =======================================
+   GLOBAL RESPONSIVE DESIGN
+=========================================*/
+@media (max-width: 768px) {
+    body { font-size: 0.95rem; }
+
+    header { padding: 1rem; }
+    header h1 { font-size: 1.4rem; }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    main {
+        margin: 0.5rem;
+        padding: 0.75rem;
+        box-shadow: none;
+    }
+
+    .hero-img, .mount-rushmore { width: 95%; }
+
+    .player {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .player img { max-width: 80%; }
+
+    .header-left, .header-right {
+        position: static;
+        justify-content: center;
+    }
+
+    .header-logo { height: 38px; }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 6rem;
+    }
+}
